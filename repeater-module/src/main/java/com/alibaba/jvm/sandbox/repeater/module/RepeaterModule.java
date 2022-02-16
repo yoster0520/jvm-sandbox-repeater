@@ -99,7 +99,8 @@ public class RepeaterModule implements Module, ModuleLifecycle {
         // 初始化日志框架
         LogbackUtils.init(PathUtils.getConfigPath() + "/repeater-logback.xml");
         Mode mode = configInfo.getMode();
-        log.info("module on loaded,id={},version={},mode={}", com.alibaba.jvm.sandbox.repeater.module.Constants.MODULE_ID, com.alibaba.jvm.sandbox.repeater.module.Constants.VERSION, mode);
+        log.info("module on loaded,id={},version={},mode={},configPath={}",
+                com.alibaba.jvm.sandbox.repeater.module.Constants.MODULE_ID, com.alibaba.jvm.sandbox.repeater.module.Constants.VERSION, mode, PathUtils.getConfigPath());
         /* agent方式启动 */
         if (mode == Mode.AGENT && Boolean.valueOf(PropertyUtil.getPropertyOrDefault(REPEAT_SPRING_ADVICE_SWITCH, ""))) {
             log.info("agent launch mode,use Spring Instantiate Advice to register bean.");

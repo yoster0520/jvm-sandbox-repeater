@@ -27,6 +27,7 @@ public class StandaloneConfigManager implements ConfigManager {
         try {
             String config = FileUtils.readFileToString(new File(localConfigPath), "UTF-8");
             RepeaterConfig rc = JSON.parseObject(config, RepeaterConfig.class);
+            log.info("load config successful: {}", config);
             return RepeaterResult.builder().success(true).data(rc).message("operate success").build();
         } catch (Exception e) {
             log.error("error occurred when pull local config", e);
